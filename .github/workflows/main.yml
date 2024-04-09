@@ -25,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node_version }}
     - name: Use Pnpm
-      uses: pnpm/setup-node@v3
+      uses: pnpm/action-setup@v3
       with:
         version: 8
         run_install: false
