@@ -10,7 +10,7 @@ git clone --depth=1 https://${GIT_ACCESS_TOKEN}@${GIT_LAB}/${GIT_NAME}/${GIT_REP
 
 cd ${GIT_REPO} && \
 chmod +x ../docs.sh && \
-../docs.sh 0.3 ./docs ./blog && \
+../docs.sh 0.3 ./docs ./blog ./src && \
 pnpm install --silent && \
 pnpm run build && \
 cd build

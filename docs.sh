@@ -10,7 +10,7 @@ set -e
 
 field_replaced_percent=$1
 shift
-docs_paths=`find $@ ! -path "./docs/.vuepress*" | grep -P ".*\.md"`
+docs_paths=`find $@ ! -path "./docs/.vuepress*" | grep -P ".*\.mdx?"`
 # pattern='```\w\+\n.*```'
 pattern='🎺(\s*)```[^`]+🎺(\s*)```(🎺|$)'
 replaced_string='🎺\1```🎺\1**********************!!!PROTECTION POLICY!!!**********************🎺\2Waiting For The Next Deployment, Maybe It Will Be Displayed After That.🎺\2```🎺'
