@@ -1,0 +1,41 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['18']
+        os: [ubuntu-22.04]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node_version }}
+    - name: Use Pnpm
+      uses: pnpm/setup-node@v3
+      with:
+        version: 8
+        run_install: false
+    - name: ci & cd
+      run: |
+        chmod +x deploy_actions.sh
+        ./deploy_actions.sh
+      env:
+        GIT_ACCESS_TOKEN: ${{ secrets.access_token }}
+        GIT_EMAIL: ${{ secrets.email }}
+        GIT_NAME: ${{ secrets.name }}
+        GIT_REPO: ${{ secrets.repo }}
+        GIT_LAB: ${{ secrets.gitlabel }}
