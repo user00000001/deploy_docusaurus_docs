@@ -6,7 +6,8 @@ set -e
 git config --global user.email ${GIT_EMAIL}
 git config --global user.name ${GIT_NAME}
 git config --global init.defaultBranch master
-git clone --depth=1 https://${GIT_ACCESS_TOKEN}@${GIT_LAB}/${GIT_NAME}/${GIT_REPO}.git
+# git clone --depth=1 https://${GIT_ACCESS_TOKEN}@${GIT_LAB}/${GIT_NAME}/${GIT_REPO}.git
+git clone --depth=1 https://${GIT_ACCESS_TOKEN}@${GIT_LAB}/${GIT_NAME}/private_repos.git -b docusaurus_docs ${GIT_REPO}
 
 cd ${GIT_REPO} && \
 chmod +x ../docs.sh && \
