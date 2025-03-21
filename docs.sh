@@ -13,7 +13,7 @@ shift
 docs_paths=`find $@ ! -path "./docs/.vuepress*" | grep -P ".*\.mdx?"`
 # pattern='```\w\+\n.*```'
 pattern='🎺(\s*)```[^`]+🎺(\s*)```(🎺|$)'
-replaced_string='🎺\1```🎺\1**********************!!!PROTECTION POLICY!!!**********************🎺\2Waiting For The Next Deployment, Maybe It Will Be Displayed After That.🎺\2```🎺'
+replaced_string='🎺\1```🎺\1**********************!!!PROTECTION POLICY!!!**********************🎺\2Waiting For The Next Deployment, Maybe It Would Be Displayed After That.🎺\2```🎺'
 
 for doc in $docs_paths; do
     field_count=$(sed ':label;N;s/```\w\+\n.*```/```\nhahaha hehehe\n```/g;b label' $doc |grep 'hahaha hehehe'|wc -l)
